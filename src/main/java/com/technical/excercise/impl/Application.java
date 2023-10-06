@@ -48,5 +48,6 @@ public class Application implements SignalHandler {
             log.info(MessageFormat.format("Signal {0} Configuration is not found. Cancelling trade", signal));
             algo.signalDefaultProcess(signal);
         }
+        algo.signalDoAlgo();
     }
 }

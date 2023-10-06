@@ -74,4 +74,13 @@ public class AlgoImpl {
         algo.cancelTrades();
         log.info(MessageFormat.format(END_MESSAGE, signal, new Object() {}.getClass().getEnclosingMethod().getName()));
     }
+
+    /**
+     * Method : signalDoAlgo
+     * Description : Method will always be called
+     */
+    public void signalDoAlgo() {
+        Algo algo = new Algo();
+        algo.doAlgo();
+    }
 }
