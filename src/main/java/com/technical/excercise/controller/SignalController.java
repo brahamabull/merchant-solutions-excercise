@@ -1,13 +1,13 @@
 package com.technical.excercise.controller;
 
+import com.technical.excercise.exception.ErrorResponse;
 import com.technical.excercise.impl.Application;
 import com.technical.excercise.impl.ApplicationV2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.MessageFormat;
 import java.util.Objects;
@@ -58,5 +58,16 @@ public class SignalController {
         } else {
             return ResponseEntity.badRequest().body("No Signal Passed to the API. Kindly check and Try Again");
         }
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> handleNoSuchElementFoundException(
+           Exception exception
+    ) {
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                "Something Went Wrong. Please Check the Inputs"
+        );
+        return ResponseEntity.badRequest().body(errorResponse);
     }
 }

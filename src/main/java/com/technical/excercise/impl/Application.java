@@ -43,6 +43,7 @@ public class Application implements SignalHandler {
     @Override
     public void handleSignal(int signal) {
         if (processSignals.containsKey(signal)) {
+            log.info(MessageFormat.format("Processing Signal {0}", signal));
            processSignals.get(signal).accept(signal);
         } else {
             log.info(MessageFormat.format("Signal {0} Configuration is not found. Cancelling trade", signal));
