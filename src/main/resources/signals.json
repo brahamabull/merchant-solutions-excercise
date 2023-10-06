@@ -1,0 +1,39 @@
+{
+  "1": {
+    "initialProcess": "setup",
+    "inputs": [
+      1,
+      60
+    ],
+    "additionalProcess": [
+      "performCalc",
+      "submitToMarket"
+    ]
+  },
+  "2": {
+    "initialProcess": "reverse",
+    "inputs": [
+      1,
+      80
+    ],
+    "additionalProcess": [
+      "submitToMarket"
+    ]
+  },
+  "3": {
+    "initialProcess": null,
+    "inputs": [
+      1,
+      90,
+      2,
+      15
+    ],
+    "additionalProcess": [
+      "performCalc",
+      "submitToMarket"
+    ]
+  },
+  "default": {
+    "initialProcess": "cancelTrades"
+  }
+}
