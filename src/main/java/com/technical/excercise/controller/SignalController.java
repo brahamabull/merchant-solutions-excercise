@@ -22,6 +22,13 @@ public class SignalController {
     @Autowired
     private Application application;
 
+    /**
+     * Method : getSignals()
+     * Description : An API Call Method when provided the signal in Integer format will process
+     * and returns the successfully or bad request when null
+     * @param signal
+     * @return ResponseEntity Ok or Bad Request
+     */
     @GetMapping("/input/{signal}")
     public ResponseEntity<String> getSignals(@PathVariable Integer signal) {
         if (Objects.nonNull(signal)) {

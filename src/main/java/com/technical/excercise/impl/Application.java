@@ -11,6 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
+/**
+ * Class : Application
+ * Description : To implement the signal processing methods when input is recieved from API.
+ */
 @Service
 @Slf4j
 public class Application implements SignalHandler {
@@ -19,6 +23,11 @@ public class Application implements SignalHandler {
     private AlgoImpl algo;
     private Map<Integer, Consumer<Integer>> processSignals = new HashMap<>();
 
+    /**
+     * Postconstruct method to construct the Hashmap with Consumer functions
+     * To call the underlying signal processing methods based upon the
+     * signals passed.
+     */
     @PostConstruct
     public void initProcessSignals() {
         processSignals.put(1, algo::signalOneProcess);
@@ -26,6 +35,11 @@ public class Application implements SignalHandler {
         processSignals.put(3, algo::signalThreeProcess);
     }
 
+    /**
+     * Method : handleSignal
+     * Description : An overriden method from the SignalHandler of the Algo Library
+     * @param signal
+     */
     @Override
     public void handleSignal(int signal) {
         if (processSignals.containsKey(signal)) {
